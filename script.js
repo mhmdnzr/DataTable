@@ -528,3 +528,41 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+let acc = document.getElementsByClassName("accordion");
+let i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        let panel = this.parentElement.parentElement.lastElementChild;
+        if (panel.classList.contains("hidden")) {
+            panel.classList.remove("hidden");
+        } else {
+            panel.classList.add("hidden");
+        }
+    });
+}
+
+
+function rotateButton(checkbox) {
+    let icon = checkbox.nextElementSibling.querySelector('.fa-solid.fa-chevron-down');
+
+    // Toggle the 'rotate-180' class on the checkbox label
+    checkbox.classList.toggle('rotate-0');
+
+    // Toggle the 'rotate-180' class on the icon
+    icon.classList.toggle('rotate-180');
+
+    // Find the two-level parent using the official class
+    let twoLevelParent = checkbox.closest('.official-class');
+
+    if (twoLevelParent) {
+        if (checkbox.checked) {
+            twoLevelParent.classList.replace('bg-white', 'bg-neutral-100');
+        } else {
+            twoLevelParent.classList.replace('bg-neutral-100', 'bg-white');
+        }
+    }
+
+    console.log(checkbox.checked ? checkbox.id + ' is checked' : checkbox.id + ' is unchecked');
+}

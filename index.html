@@ -1,68 +1,50 @@
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
-    <!-- Include DataTables CSS and JS files -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.min.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
 <body>
-    <table id="ordersTable" class="display">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Company Name</th>
-                <th>Sale Branch Name</th>
-                <!-- Add other columns as needed -->
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data will be inserted here dynamically using JavaScript -->
-        </tbody>
-    </table>
+    <div class="overflow-x-auto">
 
-    <script>
-        $(document).ready(function () {
-            axios.get('http://localhost:58863/api/PurchaseOrder/GetOrders')
-                .then(function (response) {
-                    // Handle the successful response here
-                    console.log('Response:', response.data);
+        <div class="flex w-full" dir="ltr">
+            <section class="w-full flex flex-wrap mx-[16px] shadow-custom rounded-b-lg">
+                <div class="bg-neutral-100 border flex h-[52px] px-2 py-[13px] w-full border-b-[#000] border-1">
+                    <div class="w-1/12 flex justify-end px-2">
+                        عملیات
+                    </div>
+                    <div class="w-10/12 flex justify-end px-2">
+                        ردیف
+                    </div>
+                    <div class="w-1/12 flex justify-end ">
+                        <input type="checkbox" checked="checked" class="checkbox checkbox-md checkbox-neutral" />
+                    </div>
+                </div>
+
+                <div class="w-full overflow-y-auto h-[330px]" id="ordersTable">
+                    <!-- here -->
+                </div>
+            </section>
 
 
-                    // Populate the DataTable with the API response data
-                    $('#ordersTable').DataTable({
-                        data: response.data.queryResult,
-                        columns: [
-                            { data: 'id' },
-                            { data: 'companyName' },
-                            { data: 'saleBranchName' },
-                        ],
-                        //"pagingType": "full_numbers", // Enable full pagination control
-                        //"pageLength": 5, // Set the default page length
-                        "lengthMenu": [5, 10, 15, 20, 25], // Specify the page length options
-                        //"recordsTotal": totalCount, // Set the total count for pagination
-                        //"recordsFiltered": totalCount // Set the total count after filtering
-                    });
-                })
-                .catch(function (error) {
-                    // Handle errors here
-                    console.error('Error:', error);
-                });
-        });
-    </script>
+        </div>
+
+        <ul class="pagination" id="pagination"></ul>
+    </div>
+
+
+
+
+    <script src="./script.js"></script>
 </body>
 
 </html>

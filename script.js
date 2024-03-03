@@ -274,22 +274,54 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updatePagination(currentPage, totalPages) {
         paginationContainer.innerHTML = '';
-
-        for (let i = 1; i <= totalPages; i++) {
+    
+        const showPages = 2; // Number of pages to show before and after current page
+        const totalButtons = showPages * 2 + 1; // Total buttons to show (including current page)
+    
+        let startPage = Math.max(1, currentPage - showPages);
+        let endPage = Math.min(totalPages, currentPage + showPages);
+    
+        // Add "First" button
+        if (startPage > 1) {
+            addPageButton(1);
+            if (startPage > 2) {
+                addEllipsis();
+            }
+        }
+    
+        // Add page buttons
+        for (let i = startPage; i <= endPage; i++) {
+            addPageButton(i);
+        }
+    
+        // Add "Last" button
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                addEllipsis();
+            }
+            addPageButton(totalPages);
+        }
+    
+        function addPageButton(page) {
             const btn = document.createElement('button');
-            btn.classList.add('join-item')
-            btn.classList.add('btn')
-            btn.classList.add('btn-md')
-            btn.innerText = i;
-            btn.addEventListener('click', () => fetchData(i));
-            if (i === currentPage) {
+            btn.classList.add('join-item', 'btn', 'btn-md');
+            btn.innerText = page;
+            btn.addEventListener('click', () => fetchData(page));
+            if (page === currentPage) {
                 btn.classList.add('btn-active');
             }
-
             paginationContainer.appendChild(btn);
         }
+    
+        function addEllipsis() {
+            const ellipsis = document.createElement('span');
+            ellipsis.classList.add('ellipsis');
+            ellipsis.innerText = '...';
+            paginationContainer.appendChild(ellipsis);
+        }
     }
-
+    
+    
     // Initial data fetch
     fetchData(currentPage);
 });

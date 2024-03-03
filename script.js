@@ -314,8 +314,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     
         function addEllipsis() {
-            const ellipsis = document.createElement('span');
-            ellipsis.classList.add('ellipsis');
+            const ellipsis = document.createElement('button');
+            ellipsis.classList.add('join-item');
+            ellipsis.classList.add('btn');
+            ellipsis.classList.add('btn-disabled');
             ellipsis.innerText = '...';
             paginationContainer.appendChild(ellipsis);
         }

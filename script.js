@@ -274,11 +274,10 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 TableGenerator(data)
-                // Update pagination
+               
+                // each row accordion functionality
                 let acc = document.getElementsByClassName("accordion");
-
                 let i;
-
                 for (i = 0; i < acc.length; i++) {
                     acc[i].addEventListener("click", function () {
                         this.classList.toggle("active");
@@ -290,6 +289,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     });
                 }
+
+                 // Update pagination
                 updatePagination(pageNumber, Math.ceil(data.totalCount / itemsPerPage));
             })
             .catch(error => console.error('Error fetching data:', error));

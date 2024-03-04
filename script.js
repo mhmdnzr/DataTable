@@ -258,6 +258,7 @@ function TableGenerator(data) {
 
 document.addEventListener('DOMContentLoaded', function () {
 
+
     const paginationContainer = document.getElementById('pagination');
 
     const apiUrl = 'http://localhost:58863/api/PurchaseOrder/GetOrders';
@@ -274,6 +275,21 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 TableGenerator(data)
                 // Update pagination
+                let acc = document.getElementsByClassName("accordion");
+
+                let i;
+
+                for (i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        let panel = this.parentElement.parentElement.lastElementChild;
+                        if (panel.classList.contains("hidden")) {
+                            panel.classList.remove("hidden");
+                        } else {
+                            panel.classList.add("hidden");
+                        }
+                    });
+                }
                 updatePagination(pageNumber, Math.ceil(data.totalCount / itemsPerPage));
             })
             .catch(error => console.error('Error fetching data:', error));
@@ -336,20 +352,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-let acc = document.getElementsByClassName("accordion");
-let i;
 
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        let panel = this.parentElement.parentElement.lastElementChild;
-        if (panel.classList.contains("hidden")) {
-            panel.classList.remove("hidden");
-        } else {
-            panel.classList.add("hidden");
-        }
-    });
-}
 
 
 function rotateButton(checkbox) {

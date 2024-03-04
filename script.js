@@ -2,7 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     const table = document.getElementById('ordersTable');
-    // const tbody = table.querySelector('tbody');
     const paginationContainer = document.getElementById('pagination');
 
     const apiUrl = 'http://localhost:58863/api/PurchaseOrder/GetOrders';
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-          
+       
                 const orders = data.queryResult;
 
                 // Clear existing table rows
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Populate table rows with data
                 orders.forEach(order => {
-                    
+               console.log(order.id);
                     const row = document.createElement('section');
 
 
@@ -37,9 +36,9 @@ document.addEventListener('DOMContentLoaded', function () {
                    
                     <div class="w-full border flex flex-wrap official-class rounded-[5px] bg-white transition ease-in-out">
                     <div class="w-1/12 p-2 flex row gap-5">
-                        <input type="checkbox" id=${"checkbox1-"+order.Id} class="accordion-checkbox hidden"
-                               onclick=${rotateButton(this)}>
-                        <label for=${"checkbox1-"+order.Id} class="accordion btn btn-sm btn-ghost">
+                        <input type="checkbox" id=${"checkbox1-"+order.id} class="accordion-checkbox hidden"
+                               onclick="rotateButton(this)">
+                        <label for=${"checkbox1-"+order.id} class="accordion btn btn-sm btn-ghost">
                             <i class="fa-solid fa-chevron-down"></i>
                         </label>
                    
@@ -80,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="panel z-10 hidden w-full flex justify-between bg-white">
                         <div class="w-full border flex flex-wrap official-class rounded-[5px] bg-white transition ease-in-out">
                             <div class="w-1/12 p-2 flex row gap-5">
-                                <input type="checkbox" id=${"checkbox2-"+order.Id} class="accordion-checkbox hidden"
-                                       onclick=${rotateButton(this)}>
-                                <label for=${"checkbox2-"+order.Id} class="accordion btn btn-sm btn-ghost">
+                                <input type="checkbox" id=${"checkbox2-"+order.id} class="accordion-checkbox hidden"
+                                       onclick="rotateButton(this)">
+                                <label for=${"checkbox2-"+order.id} class="accordion btn btn-sm btn-ghost">
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </label>
                    
@@ -117,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 </p>
                             </div>
                    
-                            <div class="w-1/12 p-2 flex justify-end">@order.Id</div>
+                            <div class="w-1/12 p-2 flex justify-end">${order.id}</div>
                             <div class="w-1/12 p-2 flex justify-end">
                                 <input type="checkbox" checked="checked"
                                        class="checkbox checkbox-md checkbox-neutral"/>
@@ -329,41 +328,41 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// let acc = document.getElementsByClassName("accordion");
-// let i;
+let acc = document.getElementsByClassName("accordion");
+let i;
 
-// for (i = 0; i < acc.length; i++) {
-//     acc[i].addEventListener("click", function () {
-//         this.classList.toggle("active");
-//         let panel = this.parentElement.parentElement.lastElementChild;
-//         if (panel.classList.contains("hidden")) {
-//             panel.classList.remove("hidden");
-//         } else {
-//             panel.classList.add("hidden");
-//         }
-//     });
-// }
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        let panel = this.parentElement.parentElement.lastElementChild;
+        if (panel.classList.contains("hidden")) {
+            panel.classList.remove("hidden");
+        } else {
+            panel.classList.add("hidden");
+        }
+    });
+}
 
 
 function rotateButton(checkbox) {
-    // let icon = checkbox.nextElementSibling.querySelector('.fa-solid.fa-chevron-down');
+    let icon = checkbox.nextElementSibling.querySelector('.fa-solid.fa-chevron-down');
 
-    // // Toggle the 'rotate-180' class on the checkbox label
-    // checkbox.classList.toggle('rotate-0');
+    // Toggle the 'rotate-180' class on the checkbox label
+    checkbox.classList.toggle('rotate-0');
 
-    // // Toggle the 'rotate-180' class on the icon
-    // icon.classList.toggle('rotate-180');
+    // Toggle the 'rotate-180' class on the icon
+    icon.classList.toggle('rotate-180');
 
-    // // Find the two-level parent using the official class
-    // let twoLevelParent = checkbox.closest('.official-class');
+    // Find the two-level parent using the official class
+    let twoLevelParent = checkbox.closest('.official-class');
 
-    // if (twoLevelParent) {
-    //     if (checkbox.checked) {
-    //         twoLevelParent.classList.replace('bg-white', 'bg-neutral-100');
-    //     } else {
-    //         twoLevelParent.classList.replace('bg-neutral-100', 'bg-white');
-    //     }
-    // }
-
+    if (twoLevelParent) {
+        if (checkbox.checked) {
+            twoLevelParent.classList.replace('bg-white', 'bg-neutral-100');
+        } else {
+            twoLevelParent.classList.replace('bg-neutral-100', 'bg-white');
+        }
+    }
+    
     console.log(checkbox.checked ? checkbox.id + ' is checked' : checkbox.id + ' is unchecked');
 }

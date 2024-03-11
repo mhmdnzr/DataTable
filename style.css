@@ -1,0 +1,47 @@
+/* Ray Regular */
+@font-face {
+    font-family: 'Ray';
+    src: url('./assets/fonts/RayFont/Ray/Ray.eot');
+    src: url('./assets/fonts/RayFont/Ray/Ray.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/RayFont/Ray/Ray.woff') format('woff'),
+    url('./assets/fonts/RayFont/Ray/Ray.ttf') format('truetype'),
+    url('./assets/fonts/RayFont/Ray/Ray.svg#Ray') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Ray Black */
+@font-face {
+    font-family: 'Ray Black';
+    src: url('./assets/fonts/RayFont/Ray-Black/Ray-Black.eot');
+    src: url('./assets/fonts/RayFont/Ray-Black/Ray-Black.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/RayFont/Ray-Black/Ray-Black.woff') format('woff'),
+    url('./assets/fonts/RayFont/Ray-Black/Ray-Black.ttf') format('truetype'),
+    url('./assets/fonts/RayFont/Ray-Black/Ray-Black.svg#Ray-Black') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Ray Bold */
+@font-face {
+    font-family: 'Ray Bold';
+    src: url('./assets/fonts/RayFont/Ray-Bold/Ray-Bold.eot');
+    src: url('./assets/fonts/RayFont/Ray-Bold/Ray-Bold.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/RayFont/Ray-Bold/Ray-Bold.woff') format('woff'),
+    url('./assets/fonts/RayFont/Ray-Bold/Ray-Bold.ttf') format('truetype'),
+    url('./assets/fonts/RayFont/Ray-Bold/Ray-Bold.svg#Ray-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Ray Medium */
+@font-face {
+    font-family: 'Ray Medium';
+    src: url('./assets/fonts/RayFont/Ray-Medium/Ray-Medium.eot');
+    src: url('./assets/fonts/RayFont/Ray-Medium/Ray-Medium.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/RayFont/Ray-Medium/Ray-Medium.woff') format('woff'),
+    url('./assets/fonts/RayFont/Ray-Medium/Ray-Medium.ttf') format('truetype'),
+    url('./assets/fonts/RayFont/Ray-Medium/Ray-Medium.svg#Ray-Medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

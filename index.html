@@ -1,178 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-
-
-    <link asp-append-version="true" rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.2/dist/full.min.css" rel="stylesheet" type="text/css"
-        asp-append-version="true" />
-
-
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'ray': ['Ray', 'sans-serif'],
+                        'ray-black': ['Ray Black', 'sans-serif'],
+                        'ray-bold': ['Ray Bold', 'sans-serif'],
+                        'ray-medium': ['Ray Medium', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            0: '#d4e5ee33',
+                            100: '#d4e5eecc',
+                            200: '#98bdd2cc',
+                            300: '#98bdd2',
+                            400: '#5D98BA',
+                            500: "#065280"
+                        },
+                        neutral: {
+                            100: "#f1f5f9",
+                            500: "#64748B",
+                            950: "#020617"
+                        }
+                    }
+                }
+            },
+            plugins: [
+                function ({ addUtilities }) {
+                    const newUtilities = {
+                        '.shadow-custom': {
+                            'box-shadow': '0 2px 5px rgba(0, 0, 0, 0.13)',
+                        },
+                    };
+                    addUtilities(newUtilities, ['responsive', 'hover']);
+                },
+            ]
+        }
+    </script>
 </head>
 
 <body>
 
+    <section>
 
-    <div class="w-full border flex flex-wrap official-class rounded-[5px] bg-white transition ease-in-out">
-        <div class="w-1/12 p-2 flex row gap-5">
-            <input type="checkbox" id=${"checkbox1-" + order.id} class="accordion-checkbox hidden"
-                onclick="rotateButton(this)">
-            <label for=${"checkbox1-" + order.id} class="accordion btn btn-sm btn-ghost">
-                <i class="fa-solid fa-chevron-down"></i>
-            </label>
-            <div class="dropdown dropdown-bottom">
-                <div tabindex="0" role="button" class="btn btn-sm btn-ghost">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <ul tabindex="0" class="dropdown-content z-[1111] menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li>
-                        <a href="#" class="text-right" dir="rtl">جزئیات سفارش</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-right" dir="rtl">تغیر وضعیت سفارش</a>
-                    </li>
-                </ul>
+        <div
+            class="px-[16px] pt-[22px] pb-[16px] bg-white shadow-custom grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4">
+            <!-- Row 1, Column 1 -->
+            <div class="p-[16px] flex items-center ">
+                <p class="text-right rtl">
+                    <span class="w-35 h-22 flex-grow-0 font-ray font-medium text-base text-left text-black-800">
+                        مشتری: ۱۲۳۱۱۱۲۳-احمد مرتضوی
+                    </span>
+                </p>
+            </div>
+            <!-- Row 1, Column 2 -->
+            <div class="p-[16px] flex items-center ">
+                <p class="text-right rtl">
+                    <span class="w-35 h-22 flex-grow-0 font-ray font-medium text-base text-left text-black-800">
+                        صنف-فعالیت: خرده-سوپرمارکت
+                    </span>
+                </p>
+            </div>
+            <!-- Row 1, Column 3 -->
+            <div class="p-[16px] flex items-center ">
+                <p class="text-right rtl">
+                    <span class="w-35 h-22 flex-grow-0 font-ray font-medium text-base text-left text-black-800">
+                        درجه مشتری: Z26
+                    </span>
+                </p>
+            </div>
+            <!-- Row 1, Column 4 -->
+            <div class="p-[16px] flex items-center ">
+                <p class="text-right rtl">
+                    <span class="w-35 h-22 flex-grow-0 font-ray font-medium text-base text-left text-black-800">
+                        نوع وصول: چک - ۱۰ ر وز
+                    </span>
+                </p>
+            </div>
+
+            <!-- Row 2, Column 1 -->
+            <div class="p-[16px] flex items-center ">
+                <p class="text-right rtl">
+                    <span class="w-35 h-22 flex-grow-0 font-ray font-medium text-base text-left text-black-800">
+                        شماره سفارش: ۱۲۱۳۱۴
+                    </span>
+                </p>
+            </div>
+            <!-- Row 2, Column 2 -->
+            <div class="p-[16px] flex items-center ">
+                <p class="text-right rtl">
+                    <span class="w-35 h-22 flex-grow-0 font-ray font-medium text-base text-left text-black-800">
+                        تاریخ سفارش: ۱۴۰۲-۱۰-۱۰
+                    </span>
+                </p>
+            </div>
+            <!-- Row 2, Column 3 -->
+            <div class="p-[16px] flex items-center ">
+                <p class="text-right rtl">
+                    <span class="w-35 h-22 flex-grow-0 font-ray font-medium text-base text-left text-black-800">
+                        &nbsp;
+                    </span>
+                </p>
+            </div>
+            <!-- Row 2, Column 4 -->
+            <div class="p-[16px] flex gap-[8px] items-center">
+                <p class="text-right rtl">
+                    <span class="w-35 h-22 flex-grow-0 font-ray font-medium text-base text-left text-black-800">
+                        وضعیت سفارش:
+                    </span>
+                </p>
+                <button
+                    class="btn btn-neutral text-white h-[34px] py-[4px] px-[8px] flex-grow-0 font-ray font-medium text-base text-left text-black-800">
+                    ثبت اولیه
+                </button>
             </div>
         </div>
-        <div class="w-1/12 p-2 flex justify-end">
-            <p class="text-right rtl">
-                <span>${order.orderStatusString}</span>
-            </p>
+
+
+        <div>
+            لیست سفارش
         </div>
-        <div class="w-1/12 p-2 flex justify-end">
-            <p class="text-right rtl">
-                <span>${order.saleBranchName}</span>
-            </p>
-        </div>
-        <div class="w-1/12 p-2 flex justify-end">
-            <p class="text-right rtl">
-                <span>${order.companyName}</span>
-            </p>
-        </div>
-        <div class="w-1/12 p-2 flex justify-end">
-            <p class="text-right rtl">
-                <span> ${order.customerName}</span>
-            </p>
-        </div>
-        <div class="w-1/12 p-2 flex justify-end">
-            <p class="text-right rtl">
-                <span> ${(order.factorDate != null ? order.factorDate : order.orderDate)}</span>
-            </p>
-        </div>
-        <div class="w-1/12 p-2 flex justify-end">
-            <p class="text-right rtl">
-                <span> ${(order.factorId != null ? order.factorId : order.orderId)}</span>
-            </p>
-        </div>
-        <div class="w-1/12 p-2 flex justify-end">
-            <p class="text-right rtl">
-                <span>${order.orderId}</span>
-            </p>
-        </div>
-        <div class="w-1/12 p-2 flex justify-end px-3">
-            <span>${order.id}</span>
-        </div>
-        <div class="w-1/12 p-2 flex justify-end">
-            <input type="checkbox" checked="checked" class="checkbox checkbox-md checkbox-neutral" />
-        </div>
-        <div class="panel z-10 hidden w-full flex justify-between bg-white">
-            <div class="w-full border flex flex-wrap official-class rounded-[5px] bg-white transition ease-in-out">
-                <div class="w-1/12 p-2 flex row gap-5"></div>
-                <div class="w-9/12 p-2 flex justify-end">
-                    <div dir="rtl" class="w-3/12 p-2 flex flex-wrap gap-[16px] p-[16px]">
-                        <div class='w-full py-[2px]'>
-                            <p class="text-right rtl">
-                                <span>نوع وصول:</span>
-                                &nbsp;
-                                <span>${order.collectionTypeString}</span>
-                            </p>
+
+        <div class="w-full">
+            <div class="rounded-btn collapse collapse-arrow bg-white shadow-custom my-[5px]">
+                <input type="radio" name="my-accordion-2" />
+                <div class="collapse-title text-xl font-medium border-b border-b-2 border-solid">
+                    لیست تخفیفات
+                </div>
+                <div class="collapse-content">
+                    <p>hello</p>
+                </div>
+            </div>
+            <div class="rounded-btn collapse collapse-arrow bg-white shadow-custom my-[5px]">
+                <input type="radio" name="my-accordion-2" />
+                <div class="collapse-title text-xl font-medium border-b border-b-2 border-solid">
+                    لیست جوایز
+                </div>
+                <div class="collapse-content">
+                    <p>hello</p>
+                </div>
+            </div>
+            <div class="rounded-btn collapse collapse-arrow bg-white shadow-custom my-[5px]">
+                <input type="radio" name="my-accordion-2" checked="checked" />
+                <div
+                    class="collapse-title text-xl font-medium border-b border-b-2 border-solid focus:border-neutral-950">
+                    خلاصه سفارش
+                </div>
+
+
+                <div class="collapse-content divide-y-2 divide-neutral-950">
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- First Column -->
+                        <div class="bg-white rounded rounded-[2px] m-[16px]">
+                            <h4 class="font-ray-medium text-[18px] font-semibold text-700 text-right">
+                                آدرس
+                            </h4>
                         </div>
-                        <div class='w-full py-[2px]'>
-                            <p class="text-right rtl">
-                                <span>جمع کل:</span>
-                                &nbsp;
-                                <span class="separator3">${order.sum}</span>ريال
-                            </p>
+
+                        <!-- Second Column -->
+                        <div class="bg-white rounded rounded-[2px] shadow-custom m-[16px]">
+                            <!-- Row 1 -->
+                            <div class="flex justify-between items-center border-b border-primary-200 p-2">
+                                <h4 class="font-ray-medium text-[18px] font-semibold text-700 text-right">
+                                    مبلغ ناخالص
+                                </h4>
+                                <h4 class="font-ray-medium text-[18px] font-semibold text-700 text-right">
+                                    ۱۲,۳۵۰,۰۰۰ ریال
+                                </h4>
+                            </div>
+                            <!-- Row 2 -->
+                            <div class="flex justify-between items-center border-b border-primary-200 p-2">
+                                <h4 class="font-ray-medium text-[18px] font-semibold text-700 text-right">
+                                    مبلغ تخفیف
+                                </h4>
+                                <h4 class="font-ray-medium text-[18px] font-semibold text-700 text-right">
+                                    ۱,۳۵۰,۰۰۰ ریال
+                                </h4>
+                            </div>
+                            <!-- Row 3 -->
+                            <div class="flex justify-between items-center p-2">
+                                <h4 class="font-ray-medium text-[18px] font-semibold text-700 text-right">
+                                    مبلغ ارزش افزوده
+                                </h4>
+                                <h4 class="font-ray-medium text-[18px] font-semibold text-700 text-right">
+                                    ۹۹۰,۰۰۰ ریال
+                                </h4>
+                            </div>
                         </div>
-                    </div>
-                    <div dir="rtl" class="w-3/12 p-2 flex flex-wrap gap-[16px] p-[16px]">
-                        <div class='w-full py-[2px]'>
-                            <p class="text-right rtl">
-                                <span>درجه مشتری:</span>
-                                &nbsp;
-                                <span>${order.customerDegree}</span>
-                            </p>
+                    </section>
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-4 h-[47px]">
+                        <!-- First Column -->
+                        <div class="bg-white rounded rounded-[2px] m-[8px]">
+                            &ensp;
                         </div>
-                        <div class='w-full py-[2px]'>
-                            <p class="text-right rtl">
-                                <span>مبلغ تخفیف:</span>
-                                &nbsp;
-                                <span class="separator3">${order.discount}</span>ريال
-                            </p>
+
+                        <!-- Second Column -->
+                        <div class="bg-white rounded rounded-[2px] m-[8px]">
+                            <!-- Row 1 -->
+                            <div class="flex justify-between items-center p-2">
+                                <h4 class="font-ray-medium text-[18px] font-semibold text-700 text-right">
+                                    جمع کل
+                                </h4>
+                                <h4 class="font-ray-medium text-[18px] font-semibold text-700 text-right">
+                                    ۱۱,۹۹۰,۰۰۰ ریال
+                                </h4>
+                            </div>
                         </div>
-                    </div>
-                    <div dir="rtl" class="w-3/12 p-2 flex flex-wrap gap-[16px] p-[16px]">
-                        <div class='w-full py-[2px]'>
-                            <p class="text-right rtl">
-                                <span>صنف-فعالیت:</span>
-                                &nbsp;
-                                <span>${order.activityName}</span>
-                            </p>
-                        </div>
-                        <div class='w-full py-[2px]'>
-                            <p class="text-right rtl">
-                                <span>مبلغ ارزش افزوده:</span>
-                                &nbsp;
-                                <span class="separator3 font-bold">${order.totalAmount}</span>ريال
-                            </p>
-                        </div>
-                    </div>
-                    <div dir="rtl" class="w-3/12 p-2 flex flex-wrap gap-[16px] p-[16px]">
-                        <div class='w-full py-[2px]'>
-                            <p class="text-right rtl">
-                                <span>نام تابلو:</span>
-                                &nbsp;
-                                <span>${order.shopName}</span>
-                            </p>
-                        </div>
-                        <div class='w-full py-[2px]'>
-                            <p class="text-right rtl">
-                                <span>مبلغ ناخالص:</span>
-                                &nbsp;
-                                <span class="separator3">${order.grossAmount}</span>ريال
-                            </p>
-                        </div>
-                    </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="rounded-btn collapse collapse-arrow bg-white shadow-custom my-[5px]">
+                <input type="radio" name="my-accordion-2" />
+                <div class="collapse-title text-xl font-medium border-b border-b-2 border-solid">
+                    لیست مرجوعی
+                </div>
+                <div class="collapse-content">
+                    <p>hello</p>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // each row accordion functionality
-        let acc = document.getElementsByClassName("accordion");
-        let i;
-        for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                let panel = this.parentElement.parentElement.lastElementChild;
-                if (panel.classList.contains("hidden")) {
-                    panel.classList.remove("hidden");
-                } else {
-                    panel.classList.add("hidden");
-                }
-            });
-        }
-    </script>
+    </section>
+
 </body>
 
 </html>

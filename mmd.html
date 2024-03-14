@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Event Example</title>
+    <style>
+        body {
+            height: 2500px; /* To make the page scrollable */
+        }
+
+        .destination {
+            margin-top: 800px; /* Adjust the margin based on your layout */
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="destination" id="destination1"></div>
+    <div class="destination" id="destination2"></div>
+    <div class="destination" id="destination3"></div>
+
+    <script>
+        // Function to be called when a destination is in the view
+        function destinationReached(destinationId) {
+            console.log("Destination " + destinationId + " reached!");
+            
+            // Fetch data only if it hasn't been fetched before
+            var destinationElement = document.getElementById('destination' + destinationId);
+            var hasBeenFetched = destinationElement.getAttribute('data-fetched');
+
+            if (!hasBeenFetched) {
+                // Call your fetch function or perform any action here
+                console.log("Fetching data for Destination " + destinationId);
+
+                // Mark the element as fetched to avoid fetching multiple times
+                destinationElement.setAttribute('data-fetched', 'true');
+            }
+        }
+
+        // Function to check if a destination is in the view
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Function to handle the scroll event
+        function handleScroll() {
+            var destinationElements = document.querySelectorAll('.destination');
+
+            destinationElements.forEach(function (element, index) {
+                if (isElementInViewport(element)) {
+                    destinationReached(index + 1);
+                    // Remove the event listener for the specific element to avoid multiple calls
+                    element.removeEventListener('scroll', handleScroll);
+                }
+            });
+        }
+
+        // Attach the handleScroll function to the scroll event
+        window.addEventListener('scroll', handleScroll);
+    </script>
+
+</body>
+</html>

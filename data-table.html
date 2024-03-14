@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+    <table id="prize-list" class="display">
+        <thead>
+        <tr>
+            <th class="text-right">ردیف</th>
+            <th class="text-right">شرح جایزه</th>
+            <th class="text-right">نام کالا</th>
+            <th class="text-right">تعداد</th>
+        </tr>
+        </thead>
+        <tbody class="divide-y divide-primary-200">
+        
+            
+    
+    
+        </tbody>
+    
+    </table>
+
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'ray': ['Ray', 'sans-serif'],
+                        'ray-black': ['Ray Black', 'sans-serif'],
+                        'ray-bold': ['Ray Bold', 'sans-serif'],
+                        'ray-medium': ['Ray Medium', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            0: '#d4e5ee33',
+                            100: '#d4e5eecc',
+                            200: '#98bdd2cc',
+                            300: '#98bdd2',
+                            400: '#5D98BA',
+                            500: "#065280"
+                        },
+                        neutral: {
+                            100: "#f1f5f9",
+                            500: "#64748B",
+                            950: "#020617"
+                        }
+                    }
+                }
+            },
+            plugins: [
+                function ({ addUtilities }) {
+                    const newUtilities = {
+                        '.shadow-custom': {
+                            'box-shadow': '0 2px 5px rgba(0, 0, 0, 0.13)',
+                        },
+                    };
+                    addUtilities(newUtilities, ['responsive', 'hover']);
+                },
+            ]
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+    <script src="./lib/dataTables/dataTables.tailwindcss.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#prize-list').DataTable({
+              "processing": true,
+              "serverSide": true,
+              "paging": false, // Disable pagination
+              "searching": false, // Disable search bar
+              "info": false, // Remove the "Showing 1 to 57 of 57 entries" message
+              "order": [[1, 'asc']], // Sort by the second column in ascending order
+              "ajax": {
+                "url": "http://localhost:58863/api/PurchaseOrder/GetBunosItems?PurchaseOrderId=2",
+                "type": "GET",
+                "dataSrc": "" // No need to specify property name as the data array is at the root level
+              },
+              "columns": [
+                { "data": "id" },
+                { "data": "bonusDetails" },
+                { "data": "productName" },
+                { "data": "numberOfProductItems" }
+              ]
+            });
+          });
+          
+    </script>
+</body>
+
+</html>

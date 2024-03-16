@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,33 +53,57 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <!-- Persian Datepicker Plugin -->
-    <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
+    <link rel="stylesheet" href="./persian-datepicker.min.css">
     <script src="https://unpkg.com/persian-date@latest/dist/persian-date.min.js"></script>
     <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
 </head>
+
 <body class="bg-gray-100 p-6">
     <div class="max-w-md mx-auto">
         <label for="datepicker" class="block text-sm font-medium text-gray-700">Select Date:</label>
-        <input type="text" id="datepicker" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full" placeholder="YYYY/MM/DD">
+        <input type="text" id="datepicker"
+            class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full"
+            placeholder="YYYY/MM/DD">
     </div>
 
     <script>
         $(document).ready(function () {
+
             $("#datepicker").persianDatepicker({
+                months: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"],
+                dowTitle: ["شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنج شنبه", "جمعه"],
+                shortDowTitle: ["ش", "ی", "د", "س", "چ", "پ", "ج"],
+                showGregorianDate: 0,
+                persianNumbers: 1,
                 formatDate: "YYYY/MM/DD",
-                altField: "#alt-datepicker",
-                altFormat: "YYYY/MM/DD",
-                observer: true,
-                format: "YYYY/MM/DD",
-                initialValue: false,
-                autoClose: true,
-                initialValueType: 'persian',
+                selectedBefore: 1,
+                selectedDate: null,
+                startDate: null,
+                endDate: null,
+                prevArrow: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M11.586 7.293l-4-4a.999.999 0 0 0-1.414 1.414L9.586 8l-3.414 3.414a.999.999 0 1 0 1.414 1.414l4-4a.999.999 0 0 0 0-1.414z"/></svg>',
+                nextArrow: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M4.414 8.707l4 4a.999.999 0 1 0 1.414-1.414L6.414 8l3.586-3.586A.999.999 0 0 0 9.414 3.707l-4 4a.999.999 0 0 0 0 1.414z"/></svg>'
+         ,
+                theme: 'default',
+                alwaysShow: !1,
+                selectableYears: null,
+                selectableMonths: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                cellWidth: 25, // by px
+                cellHeight: 20, // by px
+                fontSize: 14, // by px                
+                isRTL: 1,
                 calendarPosition: {
                     x: 0,
-                    y: 0
-                }
+                    y: 0,
+                },
+                onShow: function () { },
+                onHide: function () { },
+                onSelect: function (data) {
+                    console.log(data)
+                },
+                onRender: function () { }
             });
         });
     </script>
 </body>
+
 </html>

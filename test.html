@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English to Persian Digit Converter</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    // Function to convert English digits to Persian digits
+    function convertDigits(text) {
+        var persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        return text.replace(/\d/g, function(digit) {
+            return persianDigits[digit];
+        });
+    }
+
+    // Convert English digits to Persian digits for all elements on the page
+    $('body *').contents().each(function() {
+        if (this.nodeType === 3) {
+            this.nodeValue = convertDigits(this.nodeValue);
+        }
+    });
+});
+</script>
+</head>
+<body>
+    <h1>This is a test: 123456789</h1>
+    <p>Another test: 987654321</p>
+</body>
+</html>
